@@ -22,7 +22,7 @@ def user_defined_inputs(j):
     '''
     Imports an input file and returns a processed User_list
     '''
-    User_list = getattr((importlib.import_module('LI_Toconao', '../Residential_Sector/LI_Toconao.py')), 'User_list')
+    User_list = getattr((importlib.import_module('LI_El_Espino', '../LI_El_Espino.py')), 'User_list')
     return(User_list)
 
 
