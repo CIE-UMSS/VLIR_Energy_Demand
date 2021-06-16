@@ -23,73 +23,102 @@ Dist = int(input("Distance from the nearest bigger community:")) #DistanceFromAn
 LI = (round(P/PPH)*PR) #Low Income Household
 HI = round(P/PPH) - LI #High Income Household
 
-if (Alt < 2000): 
-    print('H1 = User("low income",LI)'
-    print("H1:" , LI)
-    print("H2:" , HI)
+if (Alt < 2000): #Lowlands
+    print('H1 = User("low income",', LI)
+    print('User_list.append(H1)')
+    print('H2 = User("low income",', HI)
     
-else:
-    print("Highlands")
-    print("H3:" , LI)
-    print("H4:" , HI)
+else: #highlands
+    print('H3 = User("low income",', LI)
+    print('User_list.append(H2)')
+    print('H4 = User("low income",', HI)
 
-HI = User("high income",11)
-User_list.append(HI)
-
-
-
-#Altitude
-
-    
-    
-"""
-Social Services Facilities
-"""
 #Health facilities
 if (P < 500):
-    print("Inssuficient population. Asses the distance from other community")
     if (Dist < 2):
-        print("No health facility")
+        print()
     else:
-        print("1 health post")
+        print('HP = User("Health post",',1)
+        print('User_list.append(HP)')
+        
 elif (500 < P <1000):
-    print("1 health post")
+    print('HP = User("Health post",',1)
+    print('User_list.append(HP)')
 else:
-    print("1 health center")
+    print('HC = User("Health center",',1)
+    print('User_list.append(HC)')
     
 #Schools
 if (P < 100):
-    print("Inssuficient population. Asses the distance from other community")
     if (Dist < 1):
-        print("No school")
+        print()
     else:
-        print("1 School type A")
+        print('SA = User("School type A",',1)
+        print('User_list.append(SA)')
 elif (100 < P < 500):
-    print("1 School type B")
+    print('SB = User("School type B",',1)
+    print('User_list.append(SB)')
 else:
-    print("1 school type C") 
+    print('SC = User("School type C",',1)
+    print('User_list.append(SC)')
     
 #Public lighting
+
 PL = P/10
-print(" Public lamp posts:", PL)
+print('PL = User("Public lighting ",',PL)
+print('User_list.append(PL)')
 
 #Potable water system
-PW = 
-print("Water pumps:", PW)
 
+if (P<200):
+    print()
+else: 
+    print('PW = User("Potable water system ",',1)
+    print('User_list.append(PW)')
 
 """
 Income Generating Activities
 """
+     
+#Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)
+
+if (Alt > 2000)  :
+    R1 = P/7
+    print('R1 = User("Restaurant 1",',R1)
+    print('User_list.append(R1)')
+    GS1 = P/7
+    print('GS1 = User("Grocery Store 1 ",',GS1)
+    print('User_list.append(GS1)')
+    EB1 = P/7
+    print('EB1 = User("Entertainment bussiness",',EB1)
+    print('User_list.append(EB1)')
+    WS1 = P/7
+    print('WS1 = User("Workshop 1",',WS1)
+    print('User_list.append(WS1)')
+else:
+    R2 = P/7
+    print('R2 = User("Restaurant 2",',R2)
+    print('User_list.append(R2)')
+    GS2 = P/7
+    print('GS2 = User("Grocery Store 2",',GS2)
+    print('User_list.append(GS2)')
+    EB2 = P/7
+    print('EB2 = User("Entertainment bussiness 2",',EB2)
+    print('User_list.append(EB2)')
+    WS2 = P/7
+    print("Workshops:", WS2)
+    print('WS2 = User("Workshop 2",',WS2)
+    print('User_list.append(WS2)')
+    
 #Agriculture 
-"""
+
 if (Alt < 3000):
-    print(" ")
+    print()
     if (Alt > 2000):
-        print("Agroproductive zone: Valleys")
         APU2 = P/10
-        print("Number of APU2:", APU2)
-    elif(Alt > 1000):
+        print('APU2 = User("Agroproductive Unit 2",',APU2)
+        print('User_list.append(APU2)')
+    elif(Alt < 800):
         print("Agroproductive zone: Gran Chaco")
     else:
         print("Agroproductive zone: Amazonia")
@@ -97,37 +126,8 @@ else:
     print("Agroproductive zone: Highlands")
     APU1 = P/10
     print("Number of APU1:", APU1)
-"""
-if (Alt > 3000):
-    print("Agroproductive zone: Highlands")
-elif (1500 < Alt < 3000):
-    print("Agroproductive zone: Valleys")
-else:
-    print("Three posibilities: Gran Chaco, Tropical lowlands and Amazonia")    
-    
-#Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)
-if (Alt > 2000)  :
-    R1 = P/7
-    print("Restaurants:", R1)
-    GS1 = P/7
-    print("Grocery Stores:", GS1)
-    EB1 = P/7
-    print("Entertainment bussiness:", EB1)
-    WS1 = P/7
-    print("Workshops:", WS1)
-else:
-    R2 = P/7
-    print("Restaurants:", R1)
-    GS2 = P/7
-    print("Grocery Stores:", GS1)
-    EB2 = P/7
-    print("Entertainment bussiness:", EB1)
-    WS2 = P/7
-    print("Workshops:", WS1)
-    
 
-    
-    
+"""
     
     
     
