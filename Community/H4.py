@@ -7,6 +7,11 @@
 
 from core import User, np
 User_list = []
+
+"""
+Residential sector
+"""
+
 #User classes definition
 
 HHI = User("Highlands high income household",1)
