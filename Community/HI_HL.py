@@ -13,7 +13,7 @@ HHI = User("Highlands high income household",1)
 User_list.append(HHI)
 
 
-#Lower Income
+#High Income
 #indoor bulb
 HHI_indoor_bulb = HHI.Appliance(HHI,4,7,2,287,0.4,124)
 HHI_indoor_bulb.windows([1153,1440],[0,300],0.5)
