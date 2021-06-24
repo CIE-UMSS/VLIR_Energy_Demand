@@ -9,66 +9,59 @@ Created on Wed May 26 11:16:36 2021
 
 import numpy as np
 import pandas as pd
+from core import User, np
+User_list = []
 
 class community:
     
-    def __init__(self, Altitude, Population, People_per_household, Poverty_rate, Distance):
+    def __init__(self, Alt, P, PPH, PR, Dist):
         self.Altitude = Alt
         self.Population = P
         self.People_per_household = PPH 
         self.Poverty_rate = PR
-        self.Dist = Dist
+        self.Distance_from_other_comm = Dist
 
 Alt = int(input("Altitude:")) #altitudeMasl
 P = int(input("Population:")) #Population
 PPH = int(input("Population per household:"))  #PeoplePerHousehold
 PR = float(input("Poverty rate:")) #PovertyRate
 Dist = int(input("Distance from the nearest bigger community:")) #DistanceFromAnotherCommunity(hours)
-"""
-Users classes definition
-"""
-from core import User, np
-User_list = []
 
-#Residential Demand
 
 LI = (round(P/PPH)*PR) #Low Income Household
 HI = round(P/PPH) - LI #High Income Household
-
 if (Alt < 2000): #Lowlands households
-    H1 = User("low income", LI)
+    H1 = User("low income", LI) 
     User_list.append(H1)
-    H2 = User("low income", HI)
+    H2 = User("high income", HI)
     User_list.append(H2)
 else: #highlands housegolds
     H3 = User("low income", LI)
-    User_list.append(H2)
-    H4 = User("low income", HI)
-    User_list.append(H2)
-    
-#Health facilities
+    User_list.append(H3)
+    H4 = User("high income", HI)
+    User_list.append(H4)
+
+    #Health facilities
 
 if (P < 500):
     if (Dist < 2):
-        HP = User("Health post", 0)
-        User_list.append(HP)
+        pass
     else:
         HP = User("Health post", 1)
         User_list.append(HP)
-        
+    
 elif (500 < P <1000):
     HP = User("Health post", 1)
     User_list.append(HP)
 else:
     HC = User("Health center", 1)
     User_list.append(HC)
-    
-#Schools
+
+    #Schools
 
 if (P < 100):
     if (Dist < 1):
-        S = User("School", 0)
-        User_list.appends(S)
+       pass
     else:
         S1 = User("School type 1", 1)
         User_list.append(S1)
@@ -78,74 +71,69 @@ elif (100 < P < 500):
 else:
     S3 = User("School type 3", 1)
     User_list.append(S3)
-    
-#Public lighting
 
-PL = P/10
-PL = User("Public lighting ", PL)
-User_list.append(PL)
+    #Public lighting
+
+PL = round(P/10)
+Public_lighting = User("Public lighting ", PL)
+User_list.append(Public_lighting)
 
 #Potable water system
 
 if (P<200):
-    print()
+    pass
 else: 
     PW = User("Potable water system", 1)
     User_list.append(PW)
 
-"""
-Income Generating Activities
-"""
-     
+#IGAs
+ 
 #Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)
 
 if (Alt > 2000)  :
-    R1 = P/7
-    R1 = User("Restaurant 1", R1)
-    User_list.append(R1)
-    GS1 = P/7
-    GS1 = User("Grocery Store 1", GS1)
-    User_list.append(GS1)
-    EB1 = P/7
-    EB1 = User("Entertainment bussiness", EB1)
-    User_list.append(EB1)
-    WS1 = P/7
-    WS1 = User("Workshop 1", WS1)
-    User_list.append(WS1)
+    R1 = round(P/7)
+    R = User("Restaurant 1", R1)
+    User_list.append(R)
+    GS1 = round(P/7)
+    GS = User("Grocery Store 1", GS1)
+    User_list.append(GS)
+    EB1 = round(P/7)
+    EB = User("Entertainment bussiness", EB1)
+    User_list.append(EB)
+    WS1 = round(P/7)
+    WS = User("Workshop 1", WS1)
+    User_list.append(WS)
 else:
-    R2 = P/7
-    R2 = User("Restaurant 2", R2)
-    User_list.append(R2)
-    GS2 = P/7
-    GS2 = User("Grocery Store 2", GS2)
-    User_list.append(GS2)
-    EB2 = P/7
-    EB2 = User("Entertainment bussiness 2", EB2)
-    User_list.append(EB2)
-    WS2 = P/7
-    WS2 = User("Workshop 2", WS2)
-    User_list.append(WS2)
+    R2 = round(P/7)
+    R = User("Restaurant 2", R2)
+    User_list.append(R)
+    GS2 = round(P/7)
+    GS = User("Grocery Store 2", GS2)
+    User_list.append(GS)
+    EB2 = round(P/7)
+    EB = User("Entertainment bussiness 2", EB2)
+    User_list.append(EB)
+    WS2 = round(P/7)
+    WS = User("Workshop 2", WS2)
+    User_list.append(WS)
     
 #Agriculture 
 
 if (Alt > 3000): #Highlands
-    APU1 = P/10
-    APU1 = User("Agroproductive Unit 1", APU1)
+    Agroproductive_units_1 = round(P/25)
+    APU1 = User("Agroproductive Unit 1", Agroproductive_units_1)
     User_list.append(APU1)
 elif (Alt > 2000): #Valleys
-    APU2 = P/10
-    APU2 = User("Agroproductive Unit 2", APU2)
+    Agroproductive_units_2 = round(P/25)
+    APU2 = User("Agroproductive Unit 2", Agroproductive_units_2)
     User_list.append(APU2)
 else: #Lowlands (Chaco, Tropical lowlands, Amazonia)
-    APU3 = P/10
-    APU3 = User("Agroproductive Unit 3", APU3)
+    Agroproductive_units_3 = round(P/25)
+    APU3 = User("Agroproductive Unit 3", Agroproductive_units_3)
     User_list.append(APU3)
 
-"""
-Appliances definition
-"""
+#Defining appliances    
 #Residential sector
-
 
 if (Alt < 2000): #Lowlands households   
 
@@ -270,9 +258,7 @@ else:  #highlands households
 #Health facilities
 
 if (P < 500):
-    if (Dist < 2):
-        print("No health facility)"
-    else:
+    if (Dist > 2):
         HP_indoor_bulb = HP.Appliance(HP,12,7,2,690,0.2,10)
         HP_indoor_bulb.windows([480,720],[870,1440],0.35)
 
@@ -292,19 +278,19 @@ if (P < 500):
         HP_PC.windows([480,720],[1050,1440],0.35)
 
         HP_printer = HP.Appliance(HP,1,100,1,60,0.3,10)
-        HP_printer.windows([540,1020])
+        HP_printer.windows([540,1020],[0,0])
 
         HP_fan = HP.Appliance(HP,2,60,1,240,0.2,60)
-        HP_fan.windows([660,960])
+        HP_fan.windows([660,960],[0,0])
 
         HP_sterilizer_stove = HP.Appliance(HP,1,600,2,120,0.3,30)
         HP_sterilizer_stove.windows([540,600],[900,960],)
 
         HP_needle_destroyer = HP.Appliance(HP,1,70,1,60,0.2,10)
-        HP_needle_destroyer.windows([540,600])
+        HP_needle_destroyer.windows([540,600],[0,0])
 
         HP_water_pump = HP.Appliance(HP,1,400,1,30,0.2,10)
-        HP_water_pump.windows([480,510])
+        HP_water_pump.windows([480,510],[0,0])
 
         HP_Fridge = HP.Appliance(HP,1,150,1,1440,0,30, 'yes',3)
         HP_Fridge.windows([0,1440],[0,0])
@@ -326,6 +312,8 @@ if (P < 500):
         HP_Fridge3.specific_cycle_2(150,15,5,15)
         HP_Fridge3.specific_cycle_3(150,10,5,20)
         HP_Fridge3.cycle_behaviour([580,1200],[0,0],[420,479],[0,0],[0,419],[1201,1440])
+    else:
+        pass
         
 elif (500 < P <1000):
     HP_indoor_bulb = HP.Appliance(HP,12,7,2,690,0.2,10)
@@ -353,7 +341,7 @@ elif (500 < P <1000):
     HP_fan.windows([660,960])
 
     HP_sterilizer_stove = HP.Appliance(HP,1,600,2,120,0.3,30)
-    HP_sterilizer_stove.windows([540,600],[900,960],)
+    HP_sterilizer_stove.windows([540,600],[900,960],0.3)
 
     HP_needle_destroyer = HP.Appliance(HP,1,70,1,60,0.2,10)
     HP_needle_destroyer.windows([540,600])
@@ -391,38 +379,38 @@ else:
     HC_Phone_charger = HC.Appliance(HC,5,2,2,300,0.2,5)
     HC_Phone_charger.windows([480,720],[900,1440],0.35)
 
-    HC_TV = HP.Appliance(HC,2,150,2,360,0.1,60)
+    HC_TV = HC.Appliance(HC,2,150,2,360,0.1,60)
     HC_TV.windows([480,720],[780,1020],0.2)
 
     HC_radio = HC.Appliance(HC,5,40,2,360,0.3,60)
     HC_radio.windows([480,720],[780,1020],0.2)
 
-    HC_PC = HP.Appliance(HC,2,200,2,300,0.1,10)
+    HC_PC = HC.Appliance(HC,2,200,2,300,0.1,10)
     HC_PC.windows([480,720],[1050,1440],0.35)
 
     HC_printer = HC.Appliance(HC,2,100,1,60,0.3,10)
-    HC_printer.windows([540,1020])
+    HC_printer.windows([540,1020],[0,0])
 
-    HC_fan = HP.Appliance(HC,2,60,1,240,0.2,60)
-    HC_fan.windows([660,960])
+    HC_fan = HC.Appliance(HC,2,60,1,240,0.2,60)
+    HC_fan.windows([660,960],[0,0])
 
     HC_sterilizer_stove = HC.Appliance(HC,3,600,2,120,0.3,30)
-    HC_sterilizer_stove.windows([540,600],[900,960],)
+    HC_sterilizer_stove.windows([540,600],[900,960],0.35)
 
     HC_needle_destroyer = HC.Appliance(HC,1,70,1,60,0.2,10)
-    HC_needle_destroyer.windows([540,600])
+    HC_needle_destroyer.windows([540,600],[0,0],0.35)
 
-    HC_water_pump = HP.Appliance(HC,1,400,1,30,0.2,10)
-    HC_water_pump.windows([480,510])
+    HC_water_pump = HC.Appliance(HC,1,400,1,30,0.2,10)
+    HC_water_pump.windows([480,510],[0,0])
 
-    HC_Fridge = HC.Appliance(HP,1,150,1,1440,0,30, 'yes',3)
+    HC_Fridge = HC.Appliance(HC,1,150,1,1440,0,30, 'yes',3)
     HC_Fridge.windows([0,1440],[0,0])
     HC_Fridge.specific_cycle_1(150,20,5,10)
     HC_Fridge.specific_cycle_2(150,15,5,15)
     HC_Fridge.specific_cycle_3(150,10,5,20)
     HC_Fridge.cycle_behaviour([580,1200],[0,0],[420,579],[0,0],[0,419],[1201,1440])
 
-    HC_Fridge2 = HP.Appliance(HC,1,150,1,1440,0,30, 'yes',3)
+    HC_Fridge2 = HC.Appliance(HC,1,150,1,1440,0,30, 'yes',3)
     HC_Fridge2.windows([0,1440],[0,0])
     HC_Fridge2.specific_cycle_1(150,20,5,10)
     HC_Fridge2.specific_cycle_2(150,15,5,15)
@@ -443,29 +431,29 @@ else:
     HC_Fridge4.specific_cycle_3(150,10,5,20)
     HC_Fridge4.cycle_behaviour([580,1200],[0,0],[420,479],[0,0],[0,419],[1201,1440])
 
-    HC_microscope = HP.Appliance(HC,2,3,2,120,0.2,10)
+    HC_microscope = HC.Appliance(HC,2,3,2,120,0.2,10)
     HC_microscope.windows([480,720],[840,960],0.35)
 
-    HC_shower = HP.Appliance(HC,3,3000,2,120,0,1,15)
-    HC_shower.windows([360,720],[780,2400],0.35)
+    HC_shower = HC.Appliance(HC,3,3000,2,120,0.1,15)
+    HC_shower.windows([360,720],[780,1400],0.35)
 
-    HC_heater = HP.Appliance(HC,2,1500,2,180,0.25,60)
+    HC_heater = HC.Appliance(HC,2,1500,2,180,0.25,60)
     HC_heater.windows([369,720],[1080,1260],0.35)
 
-    HC_dental_compresor = HP.Appliance(HC,2,500,2,60,0.15,10)
+    HC_dental_compresor = HC.Appliance(HC,2,500,2,60,0.15,10)
     HC_dental_compresor.windows([480,720],[840,1260],0.2)
 
-    HC_centrifuge = HP.Appliance(HC,2,100,1,60,0.15,10)
-    HC_centrifuge.windows([480,720],[0,0])
+    HC_centrifuge = HC.Appliance(HC,2,100,1,60,0.15,10)
+    HC_centrifuge.windows([480,720],[0,0],0.35)
 
-    HC_serological_rotator = HP.Appliance(HC,2,10,1,60,0.25,15)
-    HC_serological_rotator.windows([480,720],[0,0])
+    HC_serological_rotator = HC.Appliance(HC,2,10,1,60,0.25,15)
+    HC_serological_rotator.windows([480,720],[0,0],0.35)
     
     
 #Schools
 if (P < 100):
     if (Dist < 1):
-        print("no school")
+        pass
     else:
         S1_indoor_bulb = S1.Appliance(S1,6,7,2,120,0.25,30)
         S1_indoor_bulb.windows([480,780],[840,1140],0.2)
@@ -477,10 +465,11 @@ if (P < 100):
         S1_TV.windows([480,780],[840,1140],0.2)
 
         S1_radio = S1.Appliance(S1,3,4,2,120,0.1,5, occasional_use = 0.5)
-        S1_radio.windows([480,780],[840,1140],0,2)
+        S1_radio.windows([480,780],[840,1140],0.2)
 
         S1_DVD = S1.Appliance(S1,1,8,2,120,0.1,5, occasional_use = 0.5)
-        S1_DVD.windows([480,780],[840,1140],0,2)
+        S1_DVD.windows([480,780],[840,1140],0.2)
+        
 elif (100 < P < 500):
     S2_indoor_bulb = S2.Appliance(S2,12,7,2,120,0.25,30)
     S2_indoor_bulb.windows([480,780],[840,1140],0.2)
@@ -495,10 +484,10 @@ elif (100 < P < 500):
     S2_TV.windows([480,780],[840,1140],0.2)
 
     S2_radio = S2.Appliance(S2,3,4,2,120,0.1,5, occasional_use = 0.5)
-    S2_radio.windows([480,780],[840,1140],0,2)
+    S2_radio.windows([480,780],[840,1140],0.2)
 
     S2_DVD = S2.Appliance(S2,2,8,2,120,0.1,5, occasional_use = 0.5)
-    S2_DVD.windows([480,780],[840,1140],0,2)
+    S2_DVD.windows([480,780],[840,1140],0.2)
 
     S2_Freezer = S2.Appliance(S2,1,200,1,1440,0,30, 'yes',3)
     S2_Freezer.windows([0,1440])
@@ -516,10 +505,10 @@ else:
     S3_outdoor_bulb = S3.Appliance(S3,7,13,1,60,0.2,10)
     S3_outdoor_bulb.windows([480,780],[0,0])
 
-    S3_Phone_charger = S3.Appliance(S2,5,2,2,180,0.2,5)
+    S3_Phone_charger = S3.Appliance(S3,5,2,2,180,0.2,5)
     S3_Phone_charger.windows([480,780],[0,0])
 
-    S3_PC = S1.Appliance(S3,25,50,2,210,0.1,10)
+    S3_PC = S3.Appliance(S3,25,50,2,210,0.1,10)
     S3_PC.windows([480,780],[0,0])
 
     S3_Printer = S3.Appliance(S3,1,20,2,30,0.1,5)
@@ -533,26 +522,132 @@ else:
     S3_Freezer.cycle_behaviour([580,1200],[0,0],[510,579],[0,0],[0,509],[1201,1440])
 
     S3_TV = S3.Appliance(S3,5,60,2,120,0.1,5, occasional_use = 0.5)
-    S3_TV.windows([480,780],[0,0])
+    S3_TV.windows([480,780],[0,0],0.35)
 
     S3_DVD = S3.Appliance(S3,2,8,2,120,0.1,5, occasional_use = 0.5)
-    S3_DVD.windows([480,780],[0,0])
+    S3_DVD.windows([480,780],[0,0],0.35)
 
     S3_Stereo = S3.Appliance(S3,1,150,2,90,0.1,5, occasional_use = 0.33)
-    S3_Stereo.windows([480,780],[0,0])
+    S3_Stereo.windows([480,780],[0,0],0.35)
 
     S3_radio = S3.Appliance(S3,24,4,2,120,0.1,5, occasional_use = 0.5)
-    S3_radio.windows([480,780],[0,0])
+    S3_radio.windows([480,780],[0,0],0.35)
 
     S3_data = S3.Appliance(S3,1,420,2,60,0.1,5, occasional_use = 0.5)
-    S3_data.windows([480,780],[0,0])
+    S3_data.windows([480,780],[0,0],0.35)
     
-#Public lighting    
+#Public lighting
+
+    Public_lighting_lamp_post = Public_lighting.Appliance(Public_lighting,12,40,2,310,0,300, 'yes', flat = 'yes')
+    Public_lighting_lamp_post.windows([0,362],[1082,1440],0.1)
     
+#Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)  
+ 
+#Restaurant  
+    R_indoor_bulb = R.Appliance(R,2,7,2,120,0.2,10)
+    R_indoor_bulb.windows([1107,1440],[0,30],0.35)
+
+    R_Blender = R.Appliance(R,1,350,2,20,0.375,7.5)
+    R_Blender.windows([420,480],[720,780],0.5)
+
+    R_freezer = R.Appliance(R,1,200,1,1440,0,30,'yes',3)
+    R_freezer.windows([0,1440],[0,0])
+    R_freezer.specific_cycle_1(200,20,5,10)
+    R_freezer.specific_cycle_2(200,15,5,15)
+    R_freezer.specific_cycle_3(200,10,5,20)
+    R_freezer.cycle_behaviour([480,1200],[0,0],[300,479],[0,0],[0,299],[1201,1440])
+
+#Grocery store
+    GS_indoor_bulb = GS.Appliance(GS,2,7,2,120,0.2,10)
+    GS_indoor_bulb.windows([1107,1440],[0,30],0.35)
+
+    GS_outdoor_bulb = GS.Appliance(GS,1,13,2,600,0.2,10)
+    GS_outdoor_bulb.windows([0,330],[1107,1440],0.35)
     
+    GS_freezer = GS.Appliance(GS,1,200,1,1440,0,30,'yes',3)
+    GS_freezer.windows([0,1440],[0,0])
+    GS_freezer.specific_cycle_1(200,20,5,10)
+    GS_freezer.specific_cycle_2(200,15,5,15)
+    GS_freezer.specific_cycle_3(200,10,5,20)
+    GS_freezer.cycle_behaviour([480,1200],[0,0],[300,479],[0,0],[0,299],[1201,1440])
+
+    GS_Radio = GS.Appliance(GS,1,36,2,60,0.1,5)
+    GS_Radio.windows([390,450],[1140,1260],0.35)
+
+#Entertainment bussiness
+    EB_Stereo = EB.Appliance(EB,1,150,2,90,0.1,5, occasional_use = 0.33)
+    EB_Stereo.windows([480,780],[0,0],0.35)
     
-#Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)   
+    EB_TV = EB.Appliance(EB,1,60,2,120,0.1,5, occasional_use = 0.5)
+    EB_TV.windows([480,780],[840,1140],0.2)
+        
+    EB_PC = EB.Appliance(EB,1,50,2,210,0.1,10)
+    EB_PC.windows([480,780],[840,1140],0.35)
+#Workshop
     
+    WS_indoor_bulb = WS.Appliance(WS,2,7,2,120,0.2,10)
+    WS_indoor_bulb.windows([1107,1440],[0,30],0.35)
+
+    WS_welding_machine = WS.Appliance(WS,1,5500,1,60,0.5,30,occasional_use = 0.3)
+    WS_welding_machine.windows([0,1440],[0,0],0.35)
+
+    WS_grinding_machine = WS.Appliance(WS,1,750,1,480,0.125,60)
+    WS_grinding_machine.windows([0,1440],[0,0],0.35)
+
+    WS_Radio = WS.Appliance(WS,1,36,2,60,0.1,5)
+    WS_Radio.windows([390,450],[1140,1260],0.35)
     
 #Agriculture    
+
+if (Alt > 3000): #Highlands
+    APU1_WP = APU1.Appliance(APU1,1,1700,3,60,0.2,10,occasional_use = 0.33)
+    APU1_WP.windows([420,720],[840,1020],[721,839],0.35)
+
+    APU1_GM = APU1.Appliance(APU1,1,11700,1,180,0.2,30,occasional_use = 0.33)
+    APU1_GM.windows([420,1080],[0,0],0.35)
+
+    APU1_GD = APU1.Appliance(APU1,1,9360,1,180,0.2,30,occasional_use = 0.33)
+    APU1_GD.windows([420,1080],[0,0],0.35)
+
+    APU1_SM = APU1.Appliance(APU1,1,350,1,60,0.2,1)
+    APU1_SM.windows([390,450],[0,0],0.35)
+    
+elif (Alt > 2000): #Valleys
+    APU2_WP = APU2.Appliance(APU2,1,1700,2,60,0.2,10,occasional_use = 0.33)
+    APU2_WP.windows([420,720],[840,1020],0.35)
+
+    APU2_GM = APU2.Appliance(APU2,1,11700,1,180,0.2,30,occasional_use = 0.33)
+    APU2_GM.windows([420,1080],[0,0],0.35)
+
+    APU2_GD = APU2.Appliance(APU2,1,9360,1,180,0.2,30)
+    APU2_GD.windows([420,1080],[0,0],0.35)
+
+    APU2_VW = APU2.Appliance(APU2,1,1170,1,480,0.2,15,occasional_use = 0.33)
+    APU2_VW.windows([420,1140],[0,0],0.35)
+
+    APU2_SM = APU2.Appliance(APU2,1,350,1,60,0.2,1)
+    APU2_SM.windows([390,450],[0,0],0.35)
+
+    APU2_refrigerator = APU2.Appliance(APU2,2,7,2,120,0.2,10)
+    APU2_refrigerator.windows([1107,1440],[0,30],0.35)
+
+    APU2_CT = APU2.Appliance(APU2,1,2890,1,300,0.2,15,occasional_use = 0.33)
+    APU2_CT.windows([420,1080],[0,0])
+    
+else: #Lowlands (Chaco, Tropical lowlands, Amazonia)
+    APU3_WP = APU3.Appliance(APU3,1,1700,3,60,0.2,10,occasional_use = 0.33)
+    APU3_WP.windows([420,720],[840,1020],[721,839],0.35)
+
+
+    APU3_GD = APU3.Appliance(APU3,1,9360,1,180,0.2,30)
+    APU3_GD.windows([420,1080],[0,0],0.35)
+
+    APU3_VW = APU2.Appliance(APU3,1,1170,1,480,0.2,15,occasional_use = 0.33)
+    APU3_VW.windows([420,1140],[0,0],0.35)
+
+    APU3_refrigerator = APU3.Appliance(APU3,2,7,2,120,0.2,10)
+    APU3_refrigerator.windows([1107,1440],[0,30],0.35)
+
+    APU3_BT = APU3.Appliance(APU3,1,370,3,900,0.2,180)
+    APU3_BT.windows([360,930],[1080,1440],[0,359],0.35)
     
