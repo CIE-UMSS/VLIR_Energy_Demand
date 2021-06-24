@@ -28,7 +28,7 @@ PR = float(input("Poverty rate:")) #PovertyRate
 Dist = int(input("Distance from the nearest bigger community:")) #DistanceFromAnotherCommunity(hours)
 
 
-LI = (round(P/PPH)*PR) #Low Income Household
+LI = int(round(P/PPH)*PR) #Low Income Household
 HI = round(P/PPH) - LI #High Income Household
 if (Alt < 2000): #Lowlands households
     H1 = User("low income", LI) 
@@ -74,7 +74,7 @@ else:
 
     #Public lighting
 
-PL = round(P/10)
+PL = round(P/30)
 Public_lighting = User("Public lighting ", PL)
 User_list.append(Public_lighting)
 
@@ -91,44 +91,44 @@ else:
 #Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)
 
 if (Alt > 2000)  :
-    R1 = round(P/7)
+    R1 = round(P/75)
     R = User("Restaurant 1", R1)
     User_list.append(R)
-    GS1 = round(P/7)
+    GS1 = round(P/65)
     GS = User("Grocery Store 1", GS1)
     User_list.append(GS)
-    EB1 = round(P/7)
+    EB1 = round(P/250)
     EB = User("Entertainment bussiness", EB1)
     User_list.append(EB)
-    WS1 = round(P/7)
+    WS1 = round(P/85)
     WS = User("Workshop 1", WS1)
     User_list.append(WS)
 else:
-    R2 = round(P/7)
+    R2 = round(P/70)
     R = User("Restaurant 2", R2)
     User_list.append(R)
-    GS2 = round(P/7)
+    GS2 = round(P/350)
     GS = User("Grocery Store 2", GS2)
     User_list.append(GS)
-    EB2 = round(P/7)
+    EB2 = round(P/150)
     EB = User("Entertainment bussiness 2", EB2)
     User_list.append(EB)
-    WS2 = round(P/7)
+    WS2 = round(P/80)
     WS = User("Workshop 2", WS2)
     User_list.append(WS)
-    
+
 #Agriculture 
 
 if (Alt > 3000): #Highlands
-    Agroproductive_units_1 = round(P/25)
+    Agroproductive_units_1 = round(P/85)
     APU1 = User("Agroproductive Unit 1", Agroproductive_units_1)
     User_list.append(APU1)
 elif (Alt > 2000): #Valleys
-    Agroproductive_units_2 = round(P/25)
+    Agroproductive_units_2 = round(P/65)
     APU2 = User("Agroproductive Unit 2", Agroproductive_units_2)
     User_list.append(APU2)
 else: #Lowlands (Chaco, Tropical lowlands, Amazonia)
-    Agroproductive_units_3 = round(P/25)
+    Agroproductive_units_3 = round(P/50)
     APU3 = User("Agroproductive Unit 3", Agroproductive_units_3)
     User_list.append(APU3)
 
@@ -496,7 +496,7 @@ elif (100 < P < 500):
     S2_Freezer.specific_cycle_3(200,10,5,20)
     S2_Freezer.cycle_behaviour([580,1200],[0,0],[510,579],[0,0],[0,509],[1201,1440])
 
-    S2_PC = S2.Appliance(S3,1,50,2,210,0.1,10)
+    S2_PC = S2.Appliance(S2,1,50,2,210,0.1,10)
     S2_PC.windows([480,780],[840,1140],0.35)
 else:
     S3_indoor_bulb = S3.Appliance(S3,27,7,1,60,0.2,10)
@@ -535,14 +535,15 @@ else:
 
     S3_data = S3.Appliance(S3,1,420,2,60,0.1,5, occasional_use = 0.5)
     S3_data.windows([480,780],[0,0],0.35)
-    
+ 
+
 #Public lighting
 
     Public_lighting_lamp_post = Public_lighting.Appliance(Public_lighting,12,40,2,310,0,300, 'yes', flat = 'yes')
     Public_lighting_lamp_post.windows([0,362],[1082,1440],0.1)
     
 #Commerce (Grocery Stores, Restaurants, Entertainmet bussiness, Workshops)  
- 
+
 #Restaurant  
     R_indoor_bulb = R.Appliance(R,2,7,2,120,0.2,10)
     R_indoor_bulb.windows([1107,1440],[0,30],0.35)
@@ -596,7 +597,7 @@ else:
 
     WS_Radio = WS.Appliance(WS,1,36,2,60,0.1,5)
     WS_Radio.windows([390,450],[1140,1260],0.35)
-    
+
 #Agriculture    
 
 if (Alt > 3000): #Highlands
@@ -638,7 +639,6 @@ else: #Lowlands (Chaco, Tropical lowlands, Amazonia)
     APU3_WP = APU3.Appliance(APU3,1,1700,3,60,0.2,10,occasional_use = 0.33)
     APU3_WP.windows([420,720],[840,1020],[721,839],0.35)
 
-
     APU3_GD = APU3.Appliance(APU3,1,9360,1,180,0.2,30)
     APU3_GD.windows([420,1080],[0,0],0.35)
 
@@ -650,4 +650,4 @@ else: #Lowlands (Chaco, Tropical lowlands, Amazonia)
 
     APU3_BT = APU3.Appliance(APU3,1,370,3,900,0.2,180)
     APU3_BT.windows([360,930],[1080,1440],[0,359],0.35)
-    
+ 
