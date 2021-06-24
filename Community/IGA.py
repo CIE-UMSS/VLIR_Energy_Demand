@@ -94,55 +94,55 @@ WS_Radio.windows([390,450],[1140,1260],0.35)
 #Agroproductive unit 1
 
 APU1_WP = APU1.Appliance(APU1,1,1700,3,60,0.2,10, occasional_use = 0.33)
-APU1_WP.windows([1107,1440],[0,30],0.35)
+APU1_WP.windows([420,720],[840,1020],[721,839],0.35)
 
-APU1_GM = APU1.Appliance(APU1,2,7,2,120,0.2,10)
-APU1_GM.windows([1107,1440],[0,30],0.35)
+APU1_GM = APU1.Appliance(APU1,1,11700,1,180,0.2,30, occasional_use = 0.33)
+APU1_GM.windows([420,1080],0.35)
 
-APU1_GD = APU1.Appliance(APU1,2,7,2,120,0.2,10)
-APU1_GD.windows([1107,1440],[0,30],0.35)
+APU1_GD = APU1.Appliance(APU1,1,9360,1,180,0.2,30, occasional_use = 0.33)
+APU1_GD.windows([420,1080],0.35)
 
-APU1_SM = APU1.Appliance(APU1,2,7,2,120,0.2,10)
-APU1_SM.windows([1107,1440],[0,30],0.35)
+APU1_SM = APU1.Appliance(APU1,1,350,1,60,0.2,1)
+APU1_SM.windows([390,450],0.35)
 
 #Agroproductive unit 2
 
-APU2_WP = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_WP.windows([1107,1440],[0,30],0.35)
+APU2_WP = APU2.Appliance(APU2,1,1700,3,60,0.2,10, occasional_use = 0.33)
+APU2_WP.windows([420,720],[840,1020],[721,839],0.35)
 
-APU2_GM = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_GM.windows([1107,1440],[0,30],0.35)
+APU2_GM = APU2.Appliance(APU2,1,11700,1,180,0.2,30, occasional_use = 0.33)
+APU2_GM.windows([420,1080],0.35)
 
-APU2_GD = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_GD.windows([1107,1440],[0,30],0.35)
+APU2_GD = APU2.Appliance(APU2,1,9360,1,180,0.2,30)
+APU2_GD.windows([420,1080],0.35)
 
-APU2_VW = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_VW.windows([1107,1440],[0,30],0.35)
+APU2_VW = APU2.Appliance(APU2,1,1170,1,480,0.2,15, occasional_use = 0.33)
+APU2_VW.windows([420,1140],0.35)
 
-APU2_SM = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_SM.windows([1107,1440],[0,30],0.35)
+APU2_SM = APU2.Appliance(APU2,1,350,1,60,0.2,1)
+APU2_SM.windows([390,450],0.35)
 
 APU2_refrigerator = APU2.Appliance(APU2,2,7,2,120,0.2,10)
 APU2_refrigerator.windows([1107,1440],[0,30],0.35)
 
-APU2_CT = APU2.Appliance(APU2,2,7,2,120,0.2,10)
-APU2_CT.windows([1107,1440],[0,30],0.35)
+APU2_CT = APU2.Appliance(APU2,1,2890,1,300,0.2,15, occasional_use = 0.33)
+APU2_CT.windows([420,1080],0.35)
+
 #Agroproductive unit 3
 
-APU3_WP = APU3.Appliance(APU3,2,7,2,120,0.2,10)
-APU3_WP.windows([1107,1440],[0,30],0.35)
+APU3_WP = APU3.Appliance(APU3,1,1700,3,60,0.2,10, occasional_use = 0.33)
+APU3_WP.windows([420,720],[840,1020],[721,839],0.35)
 
 
-APU3_GD = APU3.Appliance(APU3,2,7,2,120,0.2,10)
-APU3_GD.windows([1107,1440],[0,30],0.35)
+APU3_GD = APU3.Appliance(APU3,1,9360,1,180,0.2,30)
+APU3_GD.windows([420,1080],0.35)
 
-APU3_VW = APU3.Appliance(APU2,2,7,2,120,0.2,10)
-APU3_VW.windows([1107,1440],[0,30],0.35)
-
+APU3_VW = APU2.Appliance(APU3,1,1170,1,480,0.2,15, occasional_use = 0.33)
+APU3_VW.windows([420,1140],0.35)
 
 APU3_refrigerator = APU3.Appliance(APU3,2,7,2,120,0.2,10)
 APU3_refrigerator.windows([1107,1440],[0,30],0.35)
 
-APU3_BT = APU3.Appliance(APU3,2,7,2,120,0.2,10)
-APU3_BT.windows([1107,1440],[0,30],0.35)
+APU3_BT = APU3.Appliance(APU3,1,370,3,900,0.2,180)
+APU3_BT.windows([360,930],[1080,1440],[0,359],0.35)
 
